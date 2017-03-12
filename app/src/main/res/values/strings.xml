@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ApplicationDemo</string>
+    <string name="hello">Hello World, Set_Text_TitleBar!</string>
+    <!--<string name="app_name">Set_Text_TitleBar</string>-->
+</resources>
