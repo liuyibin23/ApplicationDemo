@@ -6,4 +6,5 @@
 
     <color name="titlebackgroundcolor">#3232CD</color>
     <color name="titletextcolor">#000000</color>
+    <color name="bottomLineColor">#03B7CE</color>
 </resources>

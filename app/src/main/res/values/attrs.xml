@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Km2ItemStatusBar">
+        <attr name="dk_is_finished" format="boolean"/>
+        <attr name="cf_is_finished" format="boolean"/>
+        <attr name="pd_is_finished" format="boolean"/>
+        <attr name="zj_is_finished" format="boolean"/>
+        <attr name="qx_is_finished" format="boolean"/>
+    </declare-styleable>
+</resources>
