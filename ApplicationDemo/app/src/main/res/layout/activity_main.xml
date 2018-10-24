@@ -10,41 +10,51 @@
               android:paddingLeft="@dimen/activity_horizontal_margin"
               android:paddingRight="@dimen/activity_horizontal_margin"
               android:paddingTop="@dimen/activity_vertical_margin"
-              android:background="#000000"
               tools:context="com.example.applicationdemo.MainActivity">
+    <!--android:background="#000000"-->
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:drawableBottom="@drawable/bottom_blue"-->
+        <!--android:gravity="center"-->
+        <!--android:text="倒车入库"-->
+        <!--android:textColor="#03B7CE"-->
+        <!--android:textSize="20sp"/>-->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableBottom="@drawable/bottom_blue"
-        android:gravity="center"
-        android:text="倒车入库"
-        android:textColor="#03B7CE"
-        android:textSize="20sp"/>
+    <!--<ToggleButton-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:checked="true"-->
+        <!--android:textOff="关"-->
+        <!--android:textOn="开"-->
+        <!--/>-->
+    <!--<include-->
+        <!--layout="@layout/item_status_botton"-->
+        <!--/>-->
 
-    <ToggleButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checked="true"
-        android:textOff="关"
-        android:textOn="开"
-        />
-    <include
-        layout="@layout/item_status_botton"
-        />
+    <!--<com.example.applicationdemo.Km2ItemStatusBar-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:paddingTop="10dp"-->
+        <!--app:dk_is_finished="false"-->
+        <!--app:cf_is_finished="false"-->
+        <!--app:pd_is_finished="false"-->
+        <!--app:zj_is_finished="false"-->
+        <!--app:qx_is_finished="false"-->
+        <!--/>-->
+    <!--<FrameLayout-->
+        <!--android:id="@+id/container"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"/>-->
 
-    <com.example.applicationdemo.Km2ItemStatusBar
+    <Button
+        android:id="@+id/btn_plugin1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        app:dk_is_finished="false"
-        app:cf_is_finished="false"
-        app:pd_is_finished="false"
-        app:zj_is_finished="false"
-        app:qx_is_finished="false"
-        />
-    <FrameLayout
-        android:id="@+id/container"
+        android:text="Plugin1"/>
+    <Button
+        android:id="@+id/btn_plugin2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:text="Plugin2"/>
 </LinearLayout>

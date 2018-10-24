@@ -2,9 +2,14 @@ package com.example.applicationdemo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.qihoo360.replugin.RePlugin;
+import com.qihoo360.replugin.model.PluginInfo;
 import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.view.AndroidTreeView;
 
@@ -16,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        initView();
 //        ViewGroup containerView = (ViewGroup) findViewById(R.id.container);
 //
 //        TreeNode root = TreeNode.root();
@@ -29,4 +35,25 @@ public class MainActivity extends AppCompatActivity {
 ////        mainLayout.addView(tView.getView());
 //        containerView.addView(tView.getView());
     }
+
+
+    private void initView(){
+        Button btnP1 = (Button) findViewById(R.id.btn_plugin1);
+        btnP1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PluginInfo info = RePlugin.getPluginInfo("plugindemo1");
+                info.isNeedUpdate();
+                if(info == null){
+                    Toast.makeText(MainActivity.this,"未找到plugindemo1",Toast.LENGTH_LONG).show();
+                } else {
+                    RePlugin.startActivity(MainActivity.this,RePlugin.createIntent("plugindemo1",
+                            "com.example.lyb.plugindemo1.MainActivity"));
+                }
+
+            }
+        });
+
+    }
+
 }
