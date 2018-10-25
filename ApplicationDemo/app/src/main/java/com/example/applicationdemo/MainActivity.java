@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.utils.AccountManager;
 import com.qihoo360.replugin.RePlugin;
 import com.qihoo360.replugin.model.PluginInfo;
 import com.unnamed.b.atv.model.TreeNode;
@@ -51,6 +52,16 @@ public class MainActivity extends AppCompatActivity {
                             "com.example.lyb.plugindemo1.MainActivity"));
                 }
 
+            }
+        });
+
+        Button btnP2 = (Button)findViewById(R.id.btn_plugin2);
+        btnP2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AccountManager.getInstance().getCurrentUserInfo().setLogin(true);
+                AccountManager.getInstance().getCurrentUserInfo().setUsername("testuser");
+                Toast.makeText(MainActivity.this,"设置成功",Toast.LENGTH_LONG).show();
             }
         });
 
