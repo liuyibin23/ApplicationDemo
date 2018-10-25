@@ -53,6 +53,11 @@
         android:layout_height="wrap_content"
         android:text="Plugin1"/>
     <Button
+        android:id="@+id/btn_set_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Set Account"/>
+    <Button
         android:id="@+id/btn_plugin2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
