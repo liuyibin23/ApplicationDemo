@@ -11,6 +11,7 @@ public class MainApplication extends RePluginApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        RePlugin.enableDebugger(this, BuildConfig.DEBUG);
         RePlugin.registerGlobalBinder("host",new AccountMrgImpl());
     }
 }

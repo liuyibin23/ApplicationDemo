@@ -6,7 +6,9 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.lyb.plugindemo1.utils.UserInfo
 import com.example.utils.IAccountMrg
+import com.google.gson.Gson
 import com.qihoo360.replugin.RePlugin
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -38,8 +40,11 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             val accountMrg = IAccountMrg.Stub.asInterface(binder)
-            accountMrg.currentUserInfo
+            val userInfoJson = accountMrg.currentUserInfo
             Toast.makeText(this,accountMrg.currentUserInfo,Toast.LENGTH_LONG).show()
+            val g = Gson()
+            val userInfo = g.fromJson(userInfoJson,UserInfo::class.java)
+            userInfo
         }
     }
 }
