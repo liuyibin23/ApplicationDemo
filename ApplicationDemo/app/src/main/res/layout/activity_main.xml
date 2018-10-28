@@ -62,4 +62,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Plugin2"/>
+    <Button
+    android:id="@+id/btn_to_get_userinfo"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="To Get User Info"/>
+    <Button
+        android:id="@+id/btn_get_userinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Get User Info"/>
 </LinearLayout>

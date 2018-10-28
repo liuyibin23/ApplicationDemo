@@ -10,4 +10,9 @@ public class AccountMrgImpl extends IAccountMrg.Stub {
     public String getCurrentUserInfo() throws RemoteException {
         return AccountManager.getInstance().getCurrentUserInfoJson();
     }
+
+    @Override
+    public void setCurrentUserName(String name) throws RemoteException {
+        AccountManager.getInstance().getCurrentUserInfo().setUsername(name);
+    }
 }

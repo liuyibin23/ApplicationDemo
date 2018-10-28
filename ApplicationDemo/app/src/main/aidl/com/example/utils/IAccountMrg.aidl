@@ -11,4 +11,6 @@ interface IAccountMrg {
 //    void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat,
 //            double aDouble, String aString);
     String getCurrentUserInfo();
+
+    void setCurrentUserName(String name);
 }

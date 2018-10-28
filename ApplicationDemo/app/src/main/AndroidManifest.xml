@@ -29,6 +29,13 @@
 
         <activity android:name=".SecondActivity">
         </activity>
+
+        <service
+            android:name=".service.UserInfoService"
+            android:process=":remote"/>
+
+        <activity android:name=".GetUserInfoActivity">
+        </activity>
     </application>
 
 </manifest>

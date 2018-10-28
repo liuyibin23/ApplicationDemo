@@ -2,6 +2,7 @@ package com.example.applicationdemo;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
@@ -90,6 +91,21 @@ public class MainActivity extends AppCompatActivity {
 //                    RePlugin.startActivity(MainActivity.this,RePlugin.createIntent("plugindemo2",
 //                            "com.example.lyb.plugindemo2.MainActivity"));
 //                }
+            }
+        });
+
+        findViewById(R.id.btn_to_get_userinfo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,GetUserInfoActivity.class));
+            }
+        });
+
+        findViewById(R.id.btn_get_userinfo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String uinfoJson =  AccountManager.getInstance().getCurrentUserInfoJson();
+                Toast.makeText(MainActivity.this,uinfoJson,Toast.LENGTH_LONG).show();
             }
         });
 
