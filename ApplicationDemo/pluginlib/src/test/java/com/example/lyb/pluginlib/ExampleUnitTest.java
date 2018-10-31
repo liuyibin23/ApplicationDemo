@@ -1,4 +1,4 @@
-package com.exam.lyb.pluginlib;
+package com.example.lyb.pluginlib;
 
 import org.junit.Test;
 

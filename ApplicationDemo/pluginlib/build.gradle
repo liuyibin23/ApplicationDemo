@@ -23,7 +23,14 @@ android {
     }
 
 }
+
 apply plugin: 'replugin-plugin-gradle'
+repluginPluginConfig {
+    pluginName = "pluginlib"
+    hostApplicationId = "com.example.applicationdemo"
+    hostAppLauncherActivity = "com.example.applicationdemo.MainActivity"
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 

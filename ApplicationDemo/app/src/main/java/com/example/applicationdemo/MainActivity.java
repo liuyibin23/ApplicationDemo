@@ -4,7 +4,9 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Looper;
+import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.lyb.plugindemo1.utils.IMsgDemo1;
 import com.example.utils.AccountManager;
 import com.qihoo360.replugin.RePlugin;
 import com.qihoo360.replugin.model.PluginInfo;
@@ -106,6 +109,20 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String uinfoJson =  AccountManager.getInstance().getCurrentUserInfoJson();
                 Toast.makeText(MainActivity.this,uinfoJson,Toast.LENGTH_LONG).show();
+//                IBinder b = RePlugin.fetchBinder("pluginlib","pluginlib");
+//                if (b == null) {
+//                    return;
+//                }
+                IBinder b = RePlugin.fetchBinder("plugindemo1","plugindemo1");
+                if (b == null) {
+                    return;
+                }
+                IMsgDemo1 msg = IMsgDemo1.Stub.asInterface(b);
+                try {
+                    msg.onMsgReceived("plugin1demo hello");
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
             }
         });
 

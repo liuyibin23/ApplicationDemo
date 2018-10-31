@@ -1,4 +1,4 @@
-package com.exam.lyb.pluginlib;
+package com.example.lyb.pluginlib;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.exam.lyb.pluginlib.test", appContext.getPackageName());
+        assertEquals("com.example.lyb.pluginlib.test", appContext.getPackageName());
     }
 }
