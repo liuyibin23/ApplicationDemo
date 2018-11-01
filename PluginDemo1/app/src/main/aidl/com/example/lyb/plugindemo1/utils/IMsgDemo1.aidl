@@ -1,6 +1,8 @@
 // IMsgDemo1.aidl
 package com.example.lyb.plugindemo1.utils;
 
+import com.example.lyb.plugindemo1.utils.IOnMsgArrivedListener;
+
 // Declare any non-default types here with import statements
 
 interface IMsgDemo1 {
@@ -11,4 +13,10 @@ interface IMsgDemo1 {
 //    void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat,
 //            double aDouble, String aString);
     void onMsgReceived(String msg);
+
+    void registerListener(IOnMsgArrivedListener listener);
+
+    void unregisterListener(IOnMsgArrivedListener listener);
+
+    void unregisterAll();
 }

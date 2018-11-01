@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.lyb.plugindemo1.utils.IMsgDemo1;
+import com.example.lyb.plugindemo1.utils.IOnMsgArrivedListener;
 import com.example.utils.AccountManager;
 import com.qihoo360.replugin.RePlugin;
 import com.qihoo360.replugin.model.PluginInfo;
@@ -27,13 +28,20 @@ import java.io.InputStream;
 public class MainActivity extends AppCompatActivity {
 
     LinearLayout mainLayout;
+    IMsgDemo1 mIMsgDemo1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        RePlugin.preload("plugindemo1");//预加载插件
         initView();
-//        ViewGroup containerView = (ViewGroup) findViewById(R.id.container);
+        try {
+            registerMsgArrived();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        //        ViewGroup containerView = (ViewGroup) findViewById(R.id.container);
 //
 //        TreeNode root = TreeNode.root();
 //        TreeNode parent = new TreeNode("ParentNode");
@@ -109,23 +117,58 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String uinfoJson =  AccountManager.getInstance().getCurrentUserInfoJson();
                 Toast.makeText(MainActivity.this,uinfoJson,Toast.LENGTH_LONG).show();
-//                IBinder b = RePlugin.fetchBinder("pluginlib","pluginlib");
+
+            }
+        });
+
+        findViewById(R.id.btn_msg).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //                IBinder b = RePlugin.fetchBinder("pluginlib","pluginlib");
+                //                if (b == null) {
+                //                    return;
+                //                }
+//                IBinder b = RePlugin.fetchBinder("plugindemo1","plugindemo1");
 //                if (b == null) {
 //                    return;
 //                }
-                IBinder b = RePlugin.fetchBinder("plugindemo1","plugindemo1");
-                if (b == null) {
-                    return;
-                }
-                IMsgDemo1 msg = IMsgDemo1.Stub.asInterface(b);
-                try {
-                    msg.onMsgReceived("plugin1demo hello");
-                } catch (RemoteException e) {
-                    e.printStackTrace();
+//                IMsgDemo1 msg = IMsgDemo1.Stub.asInterface(b);
+                if(mIMsgDemo1 != null){
+                    try {
+                        mIMsgDemo1.onMsgReceived("plugin1demo hello");
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        if(mIMsgDemo1 != null){
+            try {
+                mIMsgDemo1.unregisterAll();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+        super.onDestroy();
+    }
+
+    private void registerMsgArrived() throws RemoteException {
+        IBinder b = RePlugin.fetchBinder("plugindemo1","plugindemo1");
+        if (b == null) {
+            return;
+        }
+        mIMsgDemo1 = IMsgDemo1.Stub.asInterface(b);
+        mIMsgDemo1.registerListener(new IOnMsgArrivedListener.Stub() {
+            @Override
+            public void onMsgArrived(String Msg) throws RemoteException {
+                Toast.makeText(MainActivity.this,Msg,Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     /**
