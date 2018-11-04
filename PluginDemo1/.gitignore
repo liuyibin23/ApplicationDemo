@@ -10,4 +10,4 @@
 .externalNativeBuild
 # Intellij
 *.iml
-.idea
+/.idea
